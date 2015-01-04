@@ -103,6 +103,9 @@ angular.module('ngHandsontable.directives', [])
 								objToCheck = scope.$parent;
 
 							while(objKeys.length > 0) {
+                if(scope.htSettings.useScope === 'false') {
+                  objKeys = [objKeys[0]];
+                }
 								var key = objKeys.shift();
 								objToCheck = objToCheck[key];
 							}
@@ -110,6 +113,8 @@ angular.module('ngHandsontable.directives', [])
 							return angular.toJson([objToCheck]);
 						},
 						function () {
+              scope.htSettings['data'] = scope.datarows;
+              settingFactory.updateHandsontableSettings(scope.hotInstance, scope.htSettings);
 							settingFactory.renderHandsontable(scope.hotInstance);
 						}
 					);

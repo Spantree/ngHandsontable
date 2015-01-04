@@ -53,6 +53,7 @@ angular.module('ngHandsontable.services', [])
 				 * @return {{}}
 				 */
 				setHandsontableSettingsFromScope: function (htOptions, scopeOptions) {
+          htOptions.push("useScope");
 					var i,
 						settings = {},
 						allOptions = angular.extend({}, scopeOptions);
